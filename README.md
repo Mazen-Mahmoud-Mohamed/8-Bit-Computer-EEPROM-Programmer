@@ -840,7 +840,7 @@ Every contribution helps the open-source community.
 
 <p align="center">
 
-<img src="https://avatars.githubusercontent.com/YOUR_USERNAME" width="150" style="border-radius:50%;">
+<img src="https://avatars.githubusercontent.com/Mazen Mahmoud" width="150" style="border-radius:50%;">
 
 </p>
 
@@ -863,15 +863,15 @@ Passionate about:
 
 <p align="center">
 
-<a href="https://github.com/YOUR_USERNAME">
+<a href="https://github.com/Mazen-Mahmoud-Mohamed">
 <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github">
 </a>
 
-<a href="https://www.linkedin.com/in/YOUR_LINKEDIN">
+<a href="https://www.linkedin.com/in/mazen-mahmoud-529120394/">
 <img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin">
 </a>
 
-<a href="mailto:YOUR_EMAIL">
+<a href="mailto:mazenmahmod397@gmail.com">
 <img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail">
 </a>
 
