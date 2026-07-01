@@ -1,80 +1,170 @@
-# 🔌 Arduino EEPROM Programmer
+<!-- ===================================================== -->
+<!-- HERO -->
+<!-- ===================================================== -->
+
+<h1 align="center">
+🔌 Arduino EEPROM Programmer
+</h1>
 
 <p align="center">
-  <img src="schematic.png" alt="EEPROM Programmer Schematic" width="900">
+An Arduino-based programmer for 28C Series EEPROMs with support for microcode generation,
+display ROM creation, and educational 8-bit computer projects.
 </p>
 
 <p align="center">
 
-![Arduino](https://img.shields.io/badge/Arduino-Nano-00979D?style=for-the-badge&logo=arduino)
-![Language](https://img.shields.io/badge/Language-C%2B%2B-blue?style=for-the-badge)
-![EEPROM](https://img.shields.io/badge/EEPROM-28C16%20%7C%2028C64%20%7C%2028C256-success?style=for-the-badge)
-![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)
-![Platform](https://img.shields.io/badge/Platform-Arduino-orange?style=for-the-badge)
+<img src="https://img.shields.io/badge/Arduino-Nano-00979D?style=for-the-badge&logo=arduino&logoColor=white">
+
+<img src="https://img.shields.io/badge/Language-C%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B">
+
+<img src="https://img.shields.io/badge/EEPROM-28C16%20%7C%2028C64%20%7C%2028C256-success?style=for-the-badge">
+
+<img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge">
+
+<img src="https://img.shields.io/badge/Platform-Arduino-orange?style=for-the-badge">
 
 </p>
+
+---
+
+# 📸 Project Preview
+
+<p align="center">
+<img src="schematic.png" width="950">
+</p>
+
+---
+
+# 📑 Table of Contents
+
+- [Overview](#-overview)
+- [Key Features](#-key-features)
+- [Project Goals](#-project-goals)
+- [Hardware Components](#-hardware-components)
+- [Supported EEPROM Devices](#-supported-eeprom-devices)
+- [Project Architecture](#-project-architecture)
+- [Why Shift Registers?](#-why-shift-registers)
+- [Circuit Diagram](#-circuit-diagram)
+- [Repository Structure](#-repository-structure)
+- [Arduino Sketches](#-arduino-sketches)
+- [Installation](#-installation)
+- [Usage](#-usage)
+- [Programming Workflow](#-programming-workflow)
+- [Applications](#-applications)
+- [Troubleshooting](#-troubleshooting)
+- [FAQ](#-faq)
+- [Future Improvements](#-future-improvements)
+- [Credits](#-credits)
+- [License](#-license)
 
 ---
 
 # 📖 Overview
 
-The **Arduino EEPROM Programmer** is a hardware and software project designed to program parallel EEPROM chips such as the **28C16**, **28C64**, and **28C256** using an **Arduino Nano**.
+The **Arduino EEPROM Programmer** is a complete hardware and software solution for programming parallel EEPROM chips such as:
 
-Because an Arduino does not provide enough GPIO pins to directly control every address, data, and control line of these EEPROM chips, this project expands the available outputs using **two 74HC595 shift registers**.
+- AT28C16
+- AT28C64
+- AT28C256
 
-Besides acting as a general EEPROM programmer, this project also contains additional sketches used to generate ROMs for an **8-bit breadboard computer**, including:
+using only an **Arduino Nano** and two **74HC595 shift registers**.
 
-- Decimal display decoder ROMs
-- CPU microcode ROMs
-- Extended microcode with conditional flags
+The project was originally inspired by **Ben Eater's 8-bit computer series**, but this repository also contains additional sketches that demonstrate practical EEPROM applications including:
 
-This project is based on the educational work of **Ben Eater** and serves as an excellent introduction to EEPROM programming, shift registers, and computer architecture.
+- Binary lookup tables
+- Seven-segment display ROMs
+- CPU instruction decoder ROMs
+- Extended microcode with flags
+- Memory dumping
+- EEPROM verification
 
----
+This repository is intended for anyone interested in:
 
-# ✨ Features
-
-- 🔹 Program 28C16 EEPROMs
-- 🔹 Program 28C64 EEPROMs
-- 🔹 Program 28C256 EEPROMs
-- 🔹 Read EEPROM contents
-- 🔹 Dump EEPROM memory
-- 🔹 Verify programmed bytes
-- 🔹 Generate ROM images
-- 🔹 Program display decoder EEPROMs
-- 🔹 Program CPU microcode EEPROMs
-- 🔹 Supports conditional microcode
-- 🔹 Uses inexpensive Arduino Nano
-- 🔹 Uses only two 74HC595 shift registers
-- 🔹 MIT Licensed
+- Embedded Systems
+- Computer Architecture
+- Digital Electronics
+- Arduino Development
+- EEPROM Programming
 
 ---
 
-# 🎯 Project Objectives
+# ✨ Key Features
 
-The main goals of this project are:
+## EEPROM Programming
 
-- Learn how parallel EEPROM memories work.
-- Understand address and data buses.
-- Build a low-cost EEPROM programmer.
-- Learn how shift registers expand Arduino I/O.
-- Generate ROM images for digital logic projects.
-- Build EEPROMs used inside an 8-bit computer.
-- Explore low-level computer architecture.
+- Read EEPROM
+- Write EEPROM
+- Verify EEPROM
+- Dump Memory
+- Address Verification
+
+---
+
+## Display Decoder Generation
+
+Generate lookup tables for:
+
+- 7-Segment Displays
+- Decimal Decoder ROMs
+- Binary-to-Display conversion
+
+---
+
+## CPU Microcode Programming
+
+Generate EEPROMs containing:
+
+- Fetch Cycle
+- Execute Cycle
+- Control Words
+- Instruction Decoder
+- Conditional Instructions
+
+---
+
+## Educational Focus
+
+Perfect for learning:
+
+- Parallel Memories
+- Digital Logic
+- Shift Registers
+- Address Buses
+- Data Buses
+- Computer Architecture
+- Breadboard Computers
+
+---
+
+# 🎯 Project Goals
+
+This project was created to demonstrate how inexpensive hardware can be used to build a reliable EEPROM programmer.
+
+Main objectives include:
+
+✅ Learning EEPROM programming
+
+✅ Understanding parallel memory devices
+
+✅ Building an inexpensive programmer
+
+✅ Learning Arduino GPIO control
+
+✅ Understanding CPU microcode
+
+✅ Building ROM lookup tables
+
+✅ Supporting educational computer projects
 
 ---
 
 # 🛠 Hardware Components
 
-The programmer requires only a few inexpensive components.
-
 | Component | Quantity |
-|------------|---------:|
+|-----------|---------:|
 | Arduino Nano / Uno | 1 |
-| 74HC595 Shift Register | 2 |
-| 28C16 EEPROM | 1 |
-| 28C64 EEPROM | Optional |
-| 28C256 EEPROM | Optional |
+| 74HC595 Shift Registers | 2 |
+| AT28C16 / 28C64 / 28C256 | 1 |
 | Breadboard | 1 |
 | Jumper Wires | Several |
 | USB Cable | 1 |
@@ -82,25 +172,45 @@ The programmer requires only a few inexpensive components.
 
 ---
 
-# 💾 Supported EEPROM Chips
+# 💾 Supported EEPROM Devices
 
-This programmer supports most parallel EEPROM devices in the **28C family**.
+| Device | Capacity | Address Lines |
+|---------|---------:|--------------:|
+| AT28C16 | 2 KB | 11 |
+| AT28C64 | 8 KB | 13 |
+| AT28C256 | 32 KB | 15 |
 
-| EEPROM | Size |
-|---------|------|
-| AT28C16 | 2 KB |
-| AT28C64 | 8 KB |
-| AT28C256 | 32 KB |
-
-Other compatible EEPROMs with the same interface can also be programmed after making small adjustments to the address width.
+Other compatible parallel EEPROM chips can also be programmed after minor modifications.
 
 ---
 
-# 🧩 Why Use Shift Registers?
+# 🏗 Project Architecture
 
-One of the biggest limitations of the Arduino Nano is the number of available digital pins.
+```text
+                 Arduino Nano
+                       │
+                       │
+        ┌──────────────┴──────────────┐
+        │                             │
+        ▼                             ▼
+   74HC595 #1                    74HC595 #2
+        │                             │
+        └──────────────┬──────────────┘
+                       │
+               EEPROM Address Bus
+                       │
+                28C Series EEPROM
+                       │
+                 Data Bus (8-bit)
+                       │
+               Read / Write Control
+```
 
-Programming an EEPROM requires controlling:
+---
+
+# 🧩 Why Shift Registers?
+
+Programming a parallel EEPROM requires controlling:
 
 - Address Lines
 - Data Bus
@@ -108,186 +218,190 @@ Programming an EEPROM requires controlling:
 - Write Enable
 - Chip Enable
 
-This quickly exceeds the available GPIO pins.
+An Arduino Nano simply doesn't have enough digital I/O pins for all these signals.
 
-To solve this problem, the project uses **two 74HC595 Serial-In Parallel-Out Shift Registers**.
+To solve this problem, this project uses **two 74HC595 Serial-In Parallel-Out Shift Registers**.
 
 Benefits include:
 
-- ✅ Drastically fewer Arduino pins required
-- ✅ Simple serial communication
-- ✅ Easy scalability
-- ✅ Faster addressing
-- ✅ Clean wiring
+- Fewer Arduino pins required
+- Simpler wiring
+- Easy scalability
+- Low hardware cost
+- Reliable address control
+- Clean hardware design
 
-Instead of directly driving every address line, the Arduino simply shifts the address bits into the two 74HC595 chips.
-
-The shift registers then hold the address stable while the EEPROM is being programmed.
+Instead of driving every address line directly, the Arduino serially shifts the address into the shift registers, which then hold the address stable while the EEPROM is programmed.
 
 ---
 
 # 🔌 Circuit Diagram
 
-The complete wiring diagram is included in this repository.
+The complete wiring schematic is included in this repository.
 
 <p align="center">
-    <img src="schematic.png" width="900">
+<img src="schematic.png" width="900">
 </p>
 
-The schematic illustrates:
+The schematic shows:
 
-- Arduino Nano connections
-- EEPROM wiring
-- Shift register connections
-- Address bus
-- Data bus
-- Output Enable
-- Write Enable
-- Power connections
+- Arduino Nano
+- EEPROM
+- 74HC595 Shift Registers
+- Address Bus
+- Data Bus
+- Control Signals
+- Power Connections
 
 ---
-
-# ⚙️ How It Works
-
-Programming an EEPROM follows a simple sequence:
-
-1. Load the desired address into the shift registers.
-2. Present the data byte on the data bus.
-3. Enable the EEPROM.
-4. Pulse the **Write Enable** pin.
-5. Wait for the internal write cycle.
-6. Repeat for the next memory address.
-
-When reading:
-
-1. Load the address.
-2. Enable Output Enable.
-3. Read the data bus.
-4. Display or store the value.
-
 # 📂 Repository Structure
 
 ```text
 Arduino-EEPROM-Programmer/
 │
-├── eeprom-programmer.ino
-├── multiplexed-display.ino
-├── microcode-eeprom-programmer.ino
-├── microcode-eeprom-with-flags.ino
-├── schematic.png
-└── README.md
+├── 📄 README.md
+├── 📷 schematic.png
+│
+├── 📁 eeprom-programmer/
+│   └── eeprom-programmer.ino
+│
+├── 📁 multiplexed-display/
+│   └── multiplexed-display.ino
+│
+├── 📁 microcode-eeprom-programmer/
+│   └── microcode-eeprom-programmer.ino
+│
+└── 📁 microcode-eeprom-with-flags/
+    └── microcode-eeprom-with-flags.ino
 ```
 
-Each sketch in this repository targets a different application while using the same EEPROM programmer hardware.
+The repository is divided into multiple Arduino sketches, each demonstrating a different application of EEPROM programming.
+
+Although the code shares many common routines, every sketch focuses on a different educational objective.
 
 ---
 
-# 📄 Included Sketches
+# 📄 Arduino Sketches
 
-This repository contains four Arduino sketches.
+This repository contains **four independent Arduino sketches**.
 
-Each one corresponds to a different stage of the project.
+Each sketch builds upon the previous one while introducing new concepts.
 
 ---
 
-## 1️⃣ Basic EEPROM Programmer
-
-**File**
+# ① Basic EEPROM Programmer
 
 ```text
 eeprom-programmer.ino
 ```
 
-This is the recommended starting point.
+The first sketch demonstrates the core functionality of the EEPROM programmer.
 
-It demonstrates the complete EEPROM programming process.
+It allows the Arduino to communicate directly with a parallel EEPROM, making it possible to write, read, and verify memory contents.
 
 ### Features
 
-- Write bytes to EEPROM
-- Read bytes back
-- Dump EEPROM contents
+- Write bytes into EEPROM
+- Read memory contents
 - Verify written data
-- Address manipulation
-- Data bus control
+- Dump EEPROM contents to Serial Monitor
+- Control the address bus
+- Control the data bus
+- Generate write pulses
 
-This sketch teaches the fundamentals of EEPROM programming before moving to more advanced projects.
+### Learning Objectives
+
+Using this sketch you'll learn:
+
+- Parallel memory communication
+- EEPROM write timing
+- Address selection
+- Data verification
+- Read/Write cycles
 
 ---
 
-## 2️⃣ Multiplexed Display EEPROM
-
-**File**
+# ② Multiplexed Display EEPROM
 
 ```text
 multiplexed-display.ino
 ```
 
-This sketch generates an EEPROM image used as a ROM lookup table for driving a multiplexed 4-digit seven-segment display.
+Instead of using software to calculate the segments that must be illuminated, this sketch generates a ROM lookup table.
 
-Instead of using software calculations, the EEPROM instantly returns the correct segment pattern.
+Each EEPROM address corresponds to a binary number, while each EEPROM output represents the segment pattern required to display that number.
+
+This dramatically simplifies digital circuit design.
 
 ### Features
 
-- Converts binary numbers
-- Generates display lookup tables
-- Drives seven-segment displays
-- Extremely fast lookup
+- Decimal lookup table generation
+- Binary to seven-segment conversion
+- Fast hardware decoding
+- Multiplexed display support
 
-Applications include:
+### Typical Applications
 
-- Digital counters
-- Clocks
-- Breadboard computers
+- Digital clocks
+- Binary counters
+- Frequency counters
 - Embedded displays
+- Breadboard computers
 
 ---
 
-## 3️⃣ CPU Microcode EEPROM
-
-**File**
+# ③ CPU Microcode EEPROM
 
 ```text
 microcode-eeprom-programmer.ino
 ```
 
-This sketch generates the microcode ROM used inside an 8-bit breadboard computer.
+One of the most interesting sketches in this repository.
 
-Instead of wiring complex combinational logic, the CPU simply reads the next control word directly from EEPROM.
+Instead of implementing a CPU instruction decoder using dozens of logic chips, the control signals are stored inside an EEPROM.
+
+Each instruction simply points to a microcode address.
+
+The EEPROM returns the control signals required for that CPU cycle.
 
 ### Generates
 
 - Fetch cycle
+- Decode cycle
 - Execute cycle
-- Control signals
-- Instruction decoder
+- Instruction control words
 
-This dramatically simplifies CPU design.
+### Advantages
+
+- Easy debugging
+- Easier CPU expansion
+- Simpler hardware
+- New instructions can be added without rewiring the CPU
 
 ---
 
-## 4️⃣ Microcode with Flags
-
-**File**
+# ④ CPU Microcode with Flags
 
 ```text
 microcode-eeprom-with-flags.ino
 ```
 
-This version expands the previous microcode by adding support for CPU flags.
+This sketch extends the previous microcode generator by adding CPU flag support.
+
+Instead of executing every instruction identically, the generated microcode can now react to processor flags.
 
 Supported flags include:
 
-- Zero Flag
-- Carry Flag
+- Zero Flag (Z)
+- Carry Flag (C)
 
-These flags allow conditional instructions such as:
+This enables conditional instructions such as:
 
 - Jump if Zero
 - Jump if Carry
-- Branch instructions
+- Conditional Branches
 
-This makes the CPU significantly more capable.
+These additions make the CPU significantly more powerful while keeping the hardware simple.
 
 ---
 
@@ -295,340 +409,515 @@ This makes the CPU significantly more capable.
 
 ## Requirements
 
-Before using this project ensure you have:
+Before running the project, make sure you have:
 
-- Arduino IDE
+- Arduino IDE 2.x
+- Arduino Nano or Uno
 - USB Cable
-- Arduino Nano
-- EEPROM
+- EEPROM Chip
 - Breadboard
-- Shift Registers
+- Two 74HC595 Shift Registers
+- Jumper Wires
+- 5V Power Supply
 
 ---
 
-# 🔨 Installation
+# 📥 Installation
 
-### Clone the repository
+Clone the repository:
 
 ```bash
 git clone https://github.com/yourusername/Arduino-EEPROM-Programmer.git
 ```
 
-### Open Arduino IDE
+Open the project using the Arduino IDE.
 
-Load the desired sketch.
+Select the sketch that matches your desired application.
 
-For beginners:
+For beginners, it is highly recommended to start with:
 
 ```text
 eeprom-programmer.ino
 ```
 
-is recommended.
+---
+
+# ⚙ Arduino IDE Configuration
+
+Board:
+
+```text
+Arduino Nano
+```
+
+Processor:
+
+```text
+ATmega328P
+```
+
+Programmer:
+
+```text
+AVRISP mkII
+```
+
+Upload Speed:
+
+```text
+115200
+```
 
 ---
 
-# ▶ Upload the Sketch
+# ▶ Uploading the Sketch
 
-1. Connect Arduino.
-2. Select the correct COM port.
-3. Select the board.
-4. Upload.
+1. Connect the Arduino via USB.
+2. Open the Arduino IDE.
+3. Select the correct board.
+4. Select the correct COM port.
+5. Open the desired sketch.
+6. Click **Upload**.
 
-After uploading the Arduino becomes an EEPROM programmer.
+After uploading, the Arduino immediately becomes an EEPROM programmer.
 
 ---
 
 # 💻 Using the Programmer
 
-Connect the EEPROM according to the schematic.
+After assembling the hardware according to the schematic:
 
-Run the sketch.
+1. Insert the EEPROM into the programmer.
+2. Power the circuit.
+3. Upload the desired sketch.
+4. Open the Serial Monitor (if required).
+5. Program or read the EEPROM.
 
-The Arduino will:
+The programmer automatically controls:
 
-- Shift addresses into the 74HC595 registers.
-- Place data onto the EEPROM bus.
-- Toggle the Write Enable pin.
-- Program the memory.
-- Verify written bytes.
+- Address Lines
+- Data Bus
+- Write Enable
+- Output Enable
+
+while handling all timing requirements internally.
 
 ---
 
-# 📊 Programming Sequence
-
-Programming a single byte involves:
+# 🔄 Programming Workflow
 
 ```text
-Address
-      ↓
-Shift Registers
-      ↓
-EEPROM Address Bus
-      ↓
-Place Data
-      ↓
-Write Enable Pulse
-      ↓
-Internal EEPROM Write
-      ↓
-Verification
+          Start
+            │
+            ▼
+   Initialize Arduino
+            │
+            ▼
+ Shift Address into 74HC595
+            │
+            ▼
+ Output Address to EEPROM
+            │
+            ▼
+ Put Data on Data Bus
+            │
+            ▼
+ Pulse Write Enable
+            │
+            ▼
+ Wait for EEPROM Write
+            │
+            ▼
+ Verify Data
+            │
+            ▼
+ Next Address
+            │
+            ▼
+          Finish
 ```
 
-This sequence is repeated until all requested addresses have been programmed.
+---
+
+# 🖥 Example Serial Output
+
+```text
+Writing EEPROM...
+
+Address 0000 : FF
+
+Address 0001 : 42
+
+Address 0002 : 13
+
+Verification Successful.
+
+EEPROM Programming Complete.
+```
 
 ---
 
-# 🧠 How Microcode Works
+# 🎮 Applications
 
-Instead of implementing CPU logic using hundreds of logic gates, this project stores control signals inside EEPROM.
+The EEPROMs programmed using this project can be used for:
 
-Every instruction corresponds to one or more control words.
-
-The CPU simply reads the EEPROM and activates the required control signals.
-
-Benefits include:
-
-- Easier debugging
-- Easier expansion
-- Cleaner CPU design
-- New instructions can be added by reprogramming the EEPROM
-
----
-
-# 🎮 Example Applications
-
-The programmed EEPROMs can be used for:
-
-- Breadboard CPUs
-- Instruction decoders
-- Seven-segment displays
-- Digital clocks
-- ROM lookup tables
-- Binary decoders
-- Embedded projects
-This process is repeated until the entire EEPROM has been programmed or dumped.
-
----
----
-
+- 8-bit Breadboard Computers
+- ROM Lookup Tables
+- Seven-Segment Display Drivers
+- Instruction Decoders
+- Embedded Systems
+- Educational Electronics Projects
+- Custom Digital Logic
 # 📈 Performance
 
-The programmer is designed to provide reliable EEPROM programming while keeping the hardware simple and inexpensive.
+The programmer is designed to provide reliable EEPROM programming while maintaining a simple hardware design and a low component count.
 
-### Advantages
+## Advantages
 
-- Reliable EEPROM programming
-- Low hardware cost
-- Minimal component count
-- Easy to understand
-- Easy to modify
-- Suitable for beginners
-- Excellent learning platform
+- ✅ Reliable EEPROM programming
+- ✅ Low-cost hardware
+- ✅ Easy to assemble
+- ✅ Beginner friendly
+- ✅ Expandable design
+- ✅ Open-source
+- ✅ Educational
+
+---
+
+# ⚡ Performance Overview
+
+| Feature | Status |
+|----------|:------:|
+| EEPROM Read | ✅ |
+| EEPROM Write | ✅ |
+| Memory Verification | ✅ |
+| Memory Dump | ✅ |
+| 7-Segment ROM Generation | ✅ |
+| CPU Microcode Generation | ✅ |
+| Conditional Microcode | ✅ |
+| Arduino Nano Compatible | ✅ |
+| Arduino Uno Compatible | ✅ |
 
 ---
 
 # 🔍 Troubleshooting
 
-## Arduino Cannot Detect EEPROM
+## Arduino cannot detect the EEPROM
 
-Possible causes:
+### Possible Causes
 
 - Incorrect wiring
-- Missing power connection
-- Wrong EEPROM orientation
+- Missing 5V supply
 - Loose jumper wires
+- EEPROM inserted backwards
 
 ### Solution
 
-- Verify every connection using the schematic.
-- Check that the EEPROM notch orientation is correct.
-- Measure the 5V supply.
-- Ensure all GND connections are shared.
+- Verify the schematic carefully.
+- Check power and ground connections.
+- Ensure the EEPROM notch orientation is correct.
+- Measure the 5V rail using a multimeter.
 
 ---
 
-## Programming Fails
+## EEPROM Programming Fails
 
-Possible causes:
+### Possible Causes
 
-- Incorrect Write Enable timing
-- EEPROM write protection
 - Faulty EEPROM
+- Incorrect write timing
+- Bad breadboard connection
 
 ### Solution
 
-- Verify the WE pulse timing.
-- Test another EEPROM.
-- Read the EEPROM before programming to ensure communication is working.
+- Test with another EEPROM.
+- Verify the Write Enable pulse.
+- Re-seat the EEPROM.
 
 ---
 
-## Incorrect Data Read Back
+## Incorrect Data After Programming
 
-Possible causes:
+### Possible Causes
 
-- Address bus errors
-- Shift register wiring
-- Floating data lines
+- Floating data bus
+- Wrong address lines
+- Shift register wiring issue
 
 ### Solution
 
-- Check the 74HC595 wiring.
-- Verify the latch and clock pins.
-- Confirm that all address lines are connected correctly.
+- Verify all address connections.
+- Check 74HC595 outputs.
+- Compare the dump with expected data.
 
 ---
 
 ## Shift Registers Not Working
 
-Check:
+Verify the following pins:
 
-- Data pin
-- Clock pin
-- Latch pin
-- Power
-- Ground
+- Data
+- Clock
+- Latch
+- Output Enable
+- VCC
+- GND
 
-A single loose wire can prevent the address from being loaded correctly.
+A single disconnected wire may prevent addresses from updating correctly.
 
 ---
 
 # ❓ Frequently Asked Questions
 
-### Why are two 74HC595 chips used?
+## Why are two 74HC595 chips used?
 
-The Arduino Nano does not have enough digital pins to directly drive every EEPROM address line.
+The Arduino Nano doesn't provide enough GPIO pins to directly control every EEPROM address line.
 
-Two 74HC595 shift registers allow many address lines to be controlled using only a few Arduino pins.
-
----
-
-### Why use EEPROM instead of Flash?
-
-Parallel EEPROMs:
-
-- can be reprogrammed easily,
-- are ideal for breadboard computers,
-- allow fast experimentation.
+Using two 74HC595 shift registers expands the available outputs while requiring only a few Arduino pins.
 
 ---
 
-### Can I use an Arduino Uno?
+## Which EEPROM chips are supported?
 
-Yes.
-
-The sketches are compatible with both Arduino Uno and Arduino Nano.
-
----
-
-### Which EEPROM chips are supported?
-
-The programmer supports:
+The programmer currently supports:
 
 - AT28C16
 - AT28C64
 - AT28C256
 
-and many compatible EEPROM devices.
+Other compatible EEPROM devices can also be used after minor software modifications.
+
+---
+
+## Can I use an Arduino Uno?
+
+Yes.
+
+The project works with:
+
+- Arduino Nano
+- Arduino Uno
+
+---
+
+## Is this programmer suitable for beginners?
+
+Absolutely.
+
+This repository was designed primarily for learning:
+
+- EEPROM Programming
+- Digital Electronics
+- Arduino
+- Computer Architecture
+
+---
+
+## Do I need external libraries?
+
+No.
+
+Everything is written using standard Arduino functions.
+
+---
+
+# 🚧 Future Improvements
+
+Potential future enhancements include:
+
+- GUI Application
+- Automatic EEPROM Detection
+- Serial Command Interface
+- USB Desktop Utility
+- PCB Version
+- EEPROM Backup Tool
+- Binary File Import
+- Intel HEX Support
+- Faster Programming Algorithm
+- Progress Indicator
+- Error Reporting
+- Verification Statistics
+
+---
+
+# 🎓 Learning Outcomes
+
+After completing this project you will understand:
+
+- EEPROM Architecture
+- Parallel Memory
+- Address Buses
+- Data Buses
+- Shift Registers
+- Memory Timing
+- Arduino GPIO
+- Microcode
+- Instruction Decoding
+- ROM Lookup Tables
+- Computer Architecture Fundamentals
 
 ---
 
 # 📚 References
 
-This project was inspired by the educational work of **Ben Eater**.
+The project is heavily inspired by the outstanding educational work of **Ben Eater**.
 
-Recommended resources:
+Recommended reading:
 
-- Ben Eater's 8-Bit Computer Series
-- Arduino Documentation
 - AT28C16 Datasheet
 - AT28C64 Datasheet
 - AT28C256 Datasheet
 - 74HC595 Datasheet
-
-These resources provide an excellent understanding of EEPROM programming and digital computer architecture.
+- Arduino Documentation
 
 ---
 
-# 🎥 Recommended Video Series
+# 🎥 Recommended Videos
 
-If you want to understand how every sketch in this repository works, the following videos are highly recommended:
+For a complete understanding of this project, the following videos are highly recommended:
 
 ### Build an Arduino EEPROM Programmer
 
-Introduces the hardware and demonstrates how the programmer works.
+Introduces the hardware and programming process.
 
 ---
 
-### Build an 8-bit Decimal Display
+### Build an 8-Bit Decimal Display
 
-Shows how EEPROM can replace combinational logic for driving seven-segment displays.
+Demonstrates using EEPROM as a lookup table for seven-segment displays.
 
 ---
 
 ### Reprogramming CPU Microcode
 
-Explains how EEPROM stores CPU control signals.
+Shows how EEPROM can replace traditional instruction decoding logic.
 
 ---
 
 ### Adding Machine Language Instructions
 
-Demonstrates extending the CPU instruction set by updating the microcode.
+Explains extending the CPU instruction set by updating EEPROM microcode.
 
 ---
 
 ### Conditional Jump Instructions
 
-Introduces CPU flags and conditional branching using EEPROM-based microcode.
-
----
-
-# 🎓 Educational Objectives
-
-After completing this project, you should understand:
-
-- EEPROM architecture
-- Parallel memory devices
-- Shift registers
-- Address buses
-- Data buses
-- Read/Write timing
-- Arduino GPIO control
-- Digital logic
-- ROM lookup tables
-- CPU microcode
-- Instruction decoding
-- Computer architecture fundamentals
+Introduces conditional branching using CPU flags stored in EEPROM.
 
 ---
 
 # 🤝 Contributing
 
-Contributions are welcome.
+Contributions are always welcome.
 
-Possible improvements include:
+Ideas include:
 
-- Supporting additional EEPROM families
-- Performance optimizations
-- Better memory verification
+- Supporting additional EEPROM chips
+- Code optimization
 - PCB design
-- Graphical interface
-- Serial command interface
-- Automatic chip detection
+- Better documentation
+- Additional examples
+- GUI tools
 
-Feel free to fork the repository and submit a pull request.
+Feel free to fork the project and submit a Pull Request.
+
+---
+
+# ⭐ Show Your Support
+
+If you found this project useful:
+
+- ⭐ Star the repository
+- 🍴 Fork the repository
+- 🛠 Improve the code
+- 📝 Report issues
+- 📢 Share the project
+
+Every contribution helps the open-source community.
+
+---
+# 👨‍💻 Author
+
+<p align="center">
+
+<img src="https://avatars.githubusercontent.com/YOUR_USERNAME" width="150" style="border-radius:50%;">
+
+</p>
+
+## Mazen Mahmoud
+
+**Management Information Systems Student**
+
+Passionate about:
+
+- Embedded Systems
+- Computer Architecture
+- Arduino Development
+- Networking
+- Python Development
+- Artificial Intelligence
+
+---
+
+# 🌐 Connect With Me
+
+<p align="center">
+
+<a href="https://github.com/YOUR_USERNAME">
+<img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github">
+</a>
+
+<a href="https://www.linkedin.com/in/YOUR_LINKEDIN">
+<img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin">
+</a>
+
+<a href="mailto:YOUR_EMAIL">
+<img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail">
+</a>
+
+</p>
+
+---
+
+# 📊 Repository Statistics
+
+### Project Highlights
+
+| Category | Details |
+|----------|---------|
+| Language | C++ |
+| Platform | Arduino Nano / Uno |
+| EEPROM Support | 28C16, 28C64, 28C256 |
+| Shift Registers | 2 × 74HC595 |
+| License | MIT |
+| Difficulty | Intermediate |
+
+---
+
+# 🛣 Roadmap
+
+Future versions may include:
+
+- [ ] GUI Programmer (Windows)
+- [ ] Intel HEX File Support
+- [ ] Binary File Programming
+- [ ] Automatic EEPROM Detection
+- [ ] Progress Bar
+- [ ] Faster Programming Algorithm
+- [ ] PCB Version
+- [ ] EEPROM Backup Utility
+- [ ] Serial Command Interface
+- [ ] Cross-Platform Desktop App
 
 ---
 
 # 📜 License
 
-This project is released under the **MIT License**.
+This repository is released under the **MIT License**.
 
-The original hardware concept and educational material were created by **Ben Eater**.
+The original project and educational concepts were created by **Ben Eater**.
 
-This repository is intended for educational purposes and further experimentation.
+This repository preserves the educational spirit of the original work while providing a well-documented implementation for learning and experimentation.
 
 ---
 
@@ -636,29 +925,60 @@ This repository is intended for educational purposes and further experimentation
 
 Special thanks to:
 
-- **Ben Eater** for his outstanding educational content.
-- The Arduino community.
-- Open-source hardware contributors.
-- Everyone who shares knowledge about digital electronics and computer architecture.
+- **Ben Eater** for his incredible educational content.
+- The Arduino Community.
+- Open Source Contributors.
+- Everyone passionate about digital electronics and computer architecture.
 
 ---
 
-# ⭐ Support
+# ⭐ Support the Project
 
-If you found this project useful:
+If you found this project useful, please consider:
 
-- ⭐ Star the repository
-- 🍴 Fork the project
-- 🛠️ Improve the code
-- 📝 Open an issue
-- 🚀 Share it with others
+- ⭐ Starring the repository
+- 🍴 Forking the project
+- 📝 Opening issues
+- 🔧 Contributing improvements
+- 📢 Sharing it with others
 
-Your support helps improve educational open-source projects.
+Every contribution helps make educational open-source projects even better.
+
+---
+
+# 📚 Related Topics
+
+- Arduino
+- EEPROM Programming
+- 74HC595
+- Digital Electronics
+- Computer Architecture
+- Breadboard Computers
+- Microcode
+- ROM Programming
+- Embedded Systems
+- Parallel Memory
+
+---
+
+# 📈 Repository Activity
+
+This repository serves as an educational reference for:
+
+- Students
+- Makers
+- Embedded Developers
+- Electronics Enthusiasts
+- Computer Architecture Learners
 
 ---
 
 <p align="center">
 
-**Made with ❤️ using Arduino, C++, EEPROM, and Digital Logic**
+## ⭐ Thanks for Visiting!
+
+If you enjoyed this project, don't forget to leave a ⭐ on the repository.
+
+Made with ❤️ using **Arduino**, **C++**, and **Digital Logic**.
 
 </p>
