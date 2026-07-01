@@ -840,7 +840,7 @@ Every contribution helps the open-source community.
 
 <p align="center">
 
-<img src="https://avatars.githubusercontent.com/Mazen Mahmoud" width="150" style="border-radius:50%;">
+<img src="https://avatars.githubusercontent.com/Mazen-Mahmoud-Mohamed" width="150" style="border-radius:50%;">
 
 </p>
 
